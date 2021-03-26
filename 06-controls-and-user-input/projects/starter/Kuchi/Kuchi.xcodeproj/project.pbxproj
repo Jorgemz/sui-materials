@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09FB7EE5260C418A00A3658B /* KeyboardFollower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7EE4260C418A00A3658B /* KeyboardFollower.swift */; };
+		09FB7EEB260C41C200A3658B /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7EE8260C41C200A3658B /* UserManager.swift */; };
+		09FB7EEC260C41C200A3658B /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7EE8260C41C200A3658B /* UserManager.swift */; };
+		09FB7EED260C41C200A3658B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7EE9260C41C200A3658B /* Profile.swift */; };
+		09FB7EEE260C41C200A3658B /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7EE9260C41C200A3658B /* Profile.swift */; };
+		09FB7EEF260C41C200A3658B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7EEA260C41C200A3658B /* Settings.swift */; };
+		09FB7EF0260C41C200A3658B /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7EEA260C41C200A3658B /* Settings.swift */; };
+		09FB7EF4260C8F5A00A3658B /* WelccomeBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7EF3260C8F5A00A3658B /* WelccomeBackgroundImage.swift */; };
+		09FB7EF5260C8F5A00A3658B /* WelccomeBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7EF3260C8F5A00A3658B /* WelccomeBackgroundImage.swift */; };
+		09FB7F1C260C9B9100A3658B /* LogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7F1B260C9B9100A3658B /* LogoImage.swift */; };
+		09FB7F1D260C9B9100A3658B /* LogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7F1B260C9B9100A3658B /* LogoImage.swift */; };
+		09FB7F21260C9E7100A3658B /* WelcomeMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7F20260C9E7100A3658B /* WelcomeMessageView.swift */; };
+		09FB7F22260C9E7100A3658B /* WelcomeMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7F20260C9E7100A3658B /* WelcomeMessageView.swift */; };
+		09FB7F26260C9EF600A3658B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7F25260C9EF600A3658B /* RegisterView.swift */; };
+		09FB7F27260C9EF600A3658B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7F25260C9EF600A3658B /* RegisterView.swift */; };
+		09FB7F2E260CA9F900A3658B /* KuchiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF340024E89F91004ABEB2 /* KuchiApp.swift */; };
+		09FB7F33260CAA1600A3658B /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A447EF252BD68200CF7A3E /* WelcomeView.swift */; };
+		09FB7F37260CB53000A3658B /* BorderedViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7F36260CB53000A3658B /* BorderedViewModifier.swift */; };
+		09FB7F38260CB53000A3658B /* BorderedViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7F36260CB53000A3658B /* BorderedViewModifier.swift */; };
 		57472F8C2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57472F8B2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift */; };
 		57472F8D2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57472F8B2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift */; };
 		57578FDE24E9D943003465A4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57578FA724E9D943003465A4 /* HomeView.swift */; };
@@ -19,10 +38,18 @@
 		57578FE924E9D943003465A4 /* jp.json in Resources */ = {isa = PBXBuildFile; fileRef = 57578FAF24E9D943003465A4 /* jp.json */; };
 		57A447F0252BD68200CF7A3E /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A447EF252BD68200CF7A3E /* WelcomeView.swift */; };
 		57EF341324E89F92004ABEB2 /* KuchiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF340024E89F91004ABEB2 /* KuchiApp.swift */; };
-		57EF341424E89F92004ABEB2 /* KuchiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF340024E89F91004ABEB2 /* KuchiApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09FB7EE4260C418A00A3658B /* KeyboardFollower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeyboardFollower.swift; path = iOS/Utils/KeyboardFollower.swift; sourceTree = SOURCE_ROOT; };
+		09FB7EE8260C41C200A3658B /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		09FB7EE9260C41C200A3658B /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		09FB7EEA260C41C200A3658B /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		09FB7EF3260C8F5A00A3658B /* WelccomeBackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelccomeBackgroundImage.swift; sourceTree = "<group>"; };
+		09FB7F1B260C9B9100A3658B /* LogoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImage.swift; sourceTree = "<group>"; };
+		09FB7F20260C9E7100A3658B /* WelcomeMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeMessageView.swift; sourceTree = "<group>"; };
+		09FB7F25260C9EF600A3658B /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		09FB7F36260CB53000A3658B /* BorderedViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderedViewModifier.swift; sourceTree = "<group>"; };
 		57472F8B2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontallyAlignedLabelStyle.swift; sourceTree = "<group>"; };
 		57578FA724E9D943003465A4 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		57578FAA24E9D943003465A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -60,7 +87,7 @@
 			children = (
 				57578F9224E9D943003465A4 /* Components */,
 				57A447EF252BD68200CF7A3E /* WelcomeView.swift */,
-				57472F8B2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift */,
+				09FB7F25260C9EF600A3658B /* RegisterView.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -68,6 +95,11 @@
 		57578F9224E9D943003465A4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				57472F8B2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift */,
+				09FB7EF3260C8F5A00A3658B /* WelccomeBackgroundImage.swift */,
+				09FB7F1B260C9B9100A3658B /* LogoImage.swift */,
+				09FB7F20260C9E7100A3658B /* WelcomeMessageView.swift */,
+				09FB7F36260CB53000A3658B /* BorderedViewModifier.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -93,6 +125,9 @@
 		57B3CA462536553D00888D62 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				09FB7EE8260C41C200A3658B /* UserManager.swift */,
+				09FB7EE9260C41C200A3658B /* Profile.swift */,
+				09FB7EEA260C41C200A3658B /* Settings.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -100,6 +135,7 @@
 		57B3CA58253655AF00888D62 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				09FB7EE4260C418A00A3658B /* KeyboardFollower.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -254,10 +290,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09FB7EF4260C8F5A00A3658B /* WelccomeBackgroundImage.swift in Sources */,
+				09FB7EEB260C41C200A3658B /* UserManager.swift in Sources */,
+				09FB7F1C260C9B9100A3658B /* LogoImage.swift in Sources */,
 				57EF341324E89F92004ABEB2 /* KuchiApp.swift in Sources */,
+				09FB7EEF260C41C200A3658B /* Settings.swift in Sources */,
+				09FB7F21260C9E7100A3658B /* WelcomeMessageView.swift in Sources */,
 				57472F8C2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift in Sources */,
+				09FB7EED260C41C200A3658B /* Profile.swift in Sources */,
 				57A447F0252BD68200CF7A3E /* WelcomeView.swift in Sources */,
+				09FB7F37260CB53000A3658B /* BorderedViewModifier.swift in Sources */,
+				09FB7F26260C9EF600A3658B /* RegisterView.swift in Sources */,
 				57578FDE24E9D943003465A4 /* HomeView.swift in Sources */,
+				09FB7EE5260C418A00A3658B /* KeyboardFollower.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,8 +310,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57EF341424E89F92004ABEB2 /* KuchiApp.swift in Sources */,
+				09FB7F27260C9EF600A3658B /* RegisterView.swift in Sources */,
+				09FB7EF5260C8F5A00A3658B /* WelccomeBackgroundImage.swift in Sources */,
+				09FB7F38260CB53000A3658B /* BorderedViewModifier.swift in Sources */,
+				09FB7F2E260CA9F900A3658B /* KuchiApp.swift in Sources */,
+				09FB7EF0260C41C200A3658B /* Settings.swift in Sources */,
+				09FB7F22260C9E7100A3658B /* WelcomeMessageView.swift in Sources */,
+				09FB7F1D260C9B9100A3658B /* LogoImage.swift in Sources */,
+				09FB7F33260CAA1600A3658B /* WelcomeView.swift in Sources */,
+				09FB7EEE260C41C200A3658B /* Profile.swift in Sources */,
 				57472F8D2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift in Sources */,
+				09FB7EEC260C41C200A3658B /* UserManager.swift in Sources */,
 				57578FDF24E9D943003465A4 /* HomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +379,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -378,6 +434,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -391,9 +449,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 42E64L44C7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -412,9 +471,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 42E64L44C7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = iOS/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -437,13 +497,14 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 42E64L44C7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.Kuchi;
 				PRODUCT_NAME = Kuchi;
 				SDKROOT = macosx;
@@ -460,13 +521,14 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 42E64L44C7;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MACOSX_DEPLOYMENT_TARGET = 11.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.razeware.Kuchi;
 				PRODUCT_NAME = Kuchi;
 				SDKROOT = macosx;

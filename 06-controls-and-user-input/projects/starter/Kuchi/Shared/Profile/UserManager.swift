@@ -32,6 +32,44 @@
 
 import SwiftUI
 
+class UserManager: ObservableObject {
+  var name: String = ""
+  @Published var profile: Profile = Profile()
+  @Published var settings: Settings = Settings(rememberUser: true)
+  
+  init() {}
+  
+  init(name: String) {
+    self.name = name
+  }
+  
+  var isUserNameValid: Bool {([true,false].randomElement()!)}
+  
+  func clear() {
+    
+  }
+  
+  func load() {
+    
+  }
+  
+  func persistProfile() {
+    
+  }
+  
+  func persistSettings() {
+    
+  }
+  
+  func setRegistered() {
+    
+  }
+}
+
+struct FlightInformation {
+  var id: Int
+}
+
 class PurchasedFlights: ObservableObject {
   @Published var purchasedFlightIds: [Int] = []
   @AppStorage("PurchasedFlight") var purchasedFlightStorage = "" {
