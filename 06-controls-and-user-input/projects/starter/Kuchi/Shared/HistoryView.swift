@@ -32,46 +32,86 @@
 
 import SwiftUI
 
-struct WelcomeView: View {
-  @EnvironmentObject var userManager: UserManager
-  @ObservedObject var challengesViewModel = ChallengesViewModel()
-  @State var showPractice = false
+struct History: Hashable {
+  let date: Date
+  let challenge: Challenge
+  
+  static func random() -> History {
+    let date = Date.init(timeIntervalSinceNow: -TimeInterval.random(in: 0...1000000))
+    
+    let challenge = ChallengesViewModel.challenges.randomElement()!
+    
+    return History(
+      date: date,
+      challenge: challenge
+    )
+  }
+  
+  static func random(count: Int) -> [History] {
+    return (0 ..< count)
+      .map({ _ in self.random() })
+      .sorted(by: { $0.date < $1.date })
+  }
+}
 
-  @ViewBuilder
-  var body: some View {
-    if showPractice {
-      PracticeView(
-        challengeTest: $challengesViewModel.currentChallenge,
-        userName: $userManager.profile.name
-      )
-    } else {
-      ZStack {
-        WelcomeBackgroundImage()
-
+struct HistoryView: View {
+  let history = History.random(count: 2000)
+  let dateFormatter: DateFormatter = {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .medium
+    formatter.timeStyle = .short
+    return formatter
+  }()
+  
+  var header: some View {
+    Text("History")
+      .foregroundColor(.white)
+      .font(.title)
+      .frame(width: UIScreen.main.bounds.width, height: 50)
+      .background(Color.gray)
+  }
+  
+  func getElement(_ element: History) -> some View {
+    VStack(alignment: .center) {
+      Text("\(dateFormatter.string(from: element.date))")
+        .font(.caption2)
+        .foregroundColor(.blue)
+      HStack {
         VStack {
-          Text(verbatim: "Hi, \(userManager.profile.name)")
-
-          WelcomeMessageView()
-
-          Button(action: {
-            self.showPractice = true
-          }, label: {
-            HStack {
-              Image(systemName: "play")
-              Text(verbatim: "Start")
-            }
-          })
+          Text("Question:")
+            .font(.caption)
+            .foregroundColor(.gray)
+          Text(element.challenge.question)
+            .font(.body)
+        }
+        
+        VStack {
+          Text("Answer:")
+            .font(.caption)
+            .foregroundColor(.gray)
+          Text(element.challenge.answer)
+            .font(.body)
+        }
+        
+        VStack {
+          Text("Guessed")
+            .font(.caption)
+            .foregroundColor(.gray)
+          Text(element.challenge.succeeded ? "yes" : "no")
         }
       }
     }
+    .padding()
+    .frame(width: UIScreen.main.bounds.width)
   }
-
+  
+  var body: some View {
+    EmptyView()
+  }
 }
 
-struct WelcomeView_Previews: PreviewProvider {
+struct HistoryView_Previews: PreviewProvider {
   static var previews: some View {
-    WelcomeView()
-      .environmentObject(UserManager())
+    HistoryView()
+  }
 }
-}
-

@@ -44,7 +44,7 @@ class UserManager: ObservableObject {
   }
   
   var isUserNameValid: Bool {([true,false].randomElement()!)}
-  
+  var isRegistered: Bool {([true,false].randomElement()!)}
   func clear() {
     
   }

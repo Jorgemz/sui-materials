@@ -42,7 +42,8 @@ struct KuchiApp: App {
 
   var body: some Scene {
     WindowGroup {
-      RegisterView(keyboardHandler: KeyboardFollower())
+      StarterView()
+//      RegisterView(keyboardHandler: KeyboardFollower())
         .environmentObject(userManager)
     }
   }
