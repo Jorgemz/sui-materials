@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09747E3C261E514B0084E137 /* HorizontallyAlignedLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57472F8B2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift */; };
+		09747E3F261E51630084E137 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7F25260C9EF600A3658B /* RegisterView.swift */; };
 		097D852C260D8AD900FE92EB /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097D8528260D8AD900FE92EB /* HistoryView.swift */; };
 		097D852D260D8AD900FE92EB /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097D8528260D8AD900FE92EB /* HistoryView.swift */; };
 		097D852E260D8AD900FE92EB /* StarterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097D8529260D8AD900FE92EB /* StarterView.swift */; };
@@ -39,13 +41,10 @@
 		09FB7F21260C9E7100A3658B /* WelcomeMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7F20260C9E7100A3658B /* WelcomeMessageView.swift */; };
 		09FB7F22260C9E7100A3658B /* WelcomeMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7F20260C9E7100A3658B /* WelcomeMessageView.swift */; };
 		09FB7F26260C9EF600A3658B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7F25260C9EF600A3658B /* RegisterView.swift */; };
-		09FB7F27260C9EF600A3658B /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7F25260C9EF600A3658B /* RegisterView.swift */; };
 		09FB7F2E260CA9F900A3658B /* KuchiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57EF340024E89F91004ABEB2 /* KuchiApp.swift */; };
-		09FB7F33260CAA1600A3658B /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A447EF252BD68200CF7A3E /* WelcomeView.swift */; };
 		09FB7F37260CB53000A3658B /* BorderedViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7F36260CB53000A3658B /* BorderedViewModifier.swift */; };
 		09FB7F38260CB53000A3658B /* BorderedViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7F36260CB53000A3658B /* BorderedViewModifier.swift */; };
 		57472F8C2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57472F8B2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift */; };
-		57472F8D2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57472F8B2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift */; };
 		57578FDE24E9D943003465A4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57578FA724E9D943003465A4 /* HomeView.swift */; };
 		57578FDF24E9D943003465A4 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57578FA724E9D943003465A4 /* HomeView.swift */; };
 		57578FE224E9D943003465A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57578FAA24E9D943003465A4 /* Assets.xcassets */; };
@@ -128,6 +127,7 @@
 			children = (
 				57578F9224E9D943003465A4 /* Components */,
 				57A447EF252BD68200CF7A3E /* WelcomeView.swift */,
+				57472F8B2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift */,
 				09FB7F25260C9EF600A3658B /* RegisterView.swift */,
 			);
 			path = Welcome;
@@ -136,7 +136,6 @@
 		57578F9224E9D943003465A4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				57472F8B2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift */,
 				09FB7EF3260C8F5A00A3658B /* WelccomeBackgroundImage.swift */,
 				09FB7F1B260C9B9100A3658B /* LogoImage.swift */,
 				09FB7F20260C9E7100A3658B /* WelcomeMessageView.swift */,
@@ -166,9 +165,9 @@
 		57B3CA462536553D00888D62 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				09FB7EE8260C41C200A3658B /* UserManager.swift */,
 				09FB7EE9260C41C200A3658B /* Profile.swift */,
 				09FB7EEA260C41C200A3658B /* Settings.swift */,
+				09FB7EE8260C41C200A3658B /* UserManager.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -194,11 +193,11 @@
 		57EF33FF24E89F91004ABEB2 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				097D8534260D8BE100FE92EB /* Practice */,
+				097D8529260D8AD900FE92EB /* StarterView.swift */,
+				097D8528260D8AD900FE92EB /* HistoryView.swift */,
 				57578FA724E9D943003465A4 /* HomeView.swift */,
 				57EF340024E89F91004ABEB2 /* KuchiApp.swift */,
-				097D8528260D8AD900FE92EB /* HistoryView.swift */,
-				097D8529260D8AD900FE92EB /* StarterView.swift */,
+				097D8534260D8BE100FE92EB /* Practice */,
 				57B3CA462536553D00888D62 /* Profile */,
 				57578FA924E9D943003465A4 /* Resources */,
 				57578F9024E9D943003465A4 /* Welcome */,
@@ -364,7 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				097D852F260D8AD900FE92EB /* StarterView.swift in Sources */,
-				09FB7F27260C9EF600A3658B /* RegisterView.swift in Sources */,
+				09747E3F261E51630084E137 /* RegisterView.swift in Sources */,
 				09FB7EF5260C8F5A00A3658B /* WelccomeBackgroundImage.swift in Sources */,
 				09FB7F38260CB53000A3658B /* BorderedViewModifier.swift in Sources */,
 				09FB7F2E260CA9F900A3658B /* KuchiApp.swift in Sources */,
@@ -372,15 +371,14 @@
 				09FB7EF0260C41C200A3658B /* Settings.swift in Sources */,
 				09FB7F22260C9E7100A3658B /* WelcomeMessageView.swift in Sources */,
 				09FB7F1D260C9B9100A3658B /* LogoImage.swift in Sources */,
-				09FB7F33260CAA1600A3658B /* WelcomeView.swift in Sources */,
 				09FB7EEE260C41C200A3658B /* Profile.swift in Sources */,
 				097D8549260D8C0300FE92EB /* PracticeView.swift in Sources */,
-				57472F8D2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift in Sources */,
 				097D854B260D8C0300FE92EB /* ChoicesView.swift in Sources */,
 				097D8543260D8C0300FE92EB /* CongratulationsView.swift in Sources */,
 				097D8541260D8C0300FE92EB /* ChallengeView.swift in Sources */,
 				09FB7EEC260C41C200A3658B /* UserManager.swift in Sources */,
 				57578FDF24E9D943003465A4 /* HomeView.swift in Sources */,
+				09747E3C261E514B0084E137 /* HorizontallyAlignedLabelStyle.swift in Sources */,
 				097D8545260D8C0300FE92EB /* QuestionView.swift in Sources */,
 				097D853F260D8C0300FE92EB /* ChoicesRow.swift in Sources */,
 				097D8547260D8C0300FE92EB /* ChallengesViewModel.swift in Sources */,

@@ -32,6 +32,6 @@
 
 import SwiftUI
 
-struct Settings {
-  var rememberUser: Bool
+struct Settings: Codable {
+  var rememberUser: Bool = false
 }

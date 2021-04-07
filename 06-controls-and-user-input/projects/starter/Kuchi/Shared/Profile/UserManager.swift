@@ -36,33 +36,55 @@ class UserManager: ObservableObject {
   var name: String = ""
   @Published var profile: Profile = Profile()
   @Published var settings: Settings = Settings(rememberUser: true)
+  @Published var isRegistered: Bool
+//  var isUserNameValid: Bool {([true,false].randomElement()!)}
+//  var isRegistered: Bool {([true,false].randomElement()!)}
   
-  init() {}
+  init() {
+    isRegistered = false
+  }
   
   init(name: String) {
-    self.name = name
-  }
-  
-  var isUserNameValid: Bool {([true,false].randomElement()!)}
-  var isRegistered: Bool {([true,false].randomElement()!)}
-  func clear() {
-    
-  }
-  
-  func load() {
-    
-  }
-  
-  func persistProfile() {
-    
-  }
-  
-  func persistSettings() {
-    
+    isRegistered = name.isEmpty == false
+    self.profile.name = name
   }
   
   func setRegistered() {
+    isRegistered = profile.name.isEmpty == false
+  }
+
+  func persistProfile() {
+    if settings.rememberUser {
+      UserDefaults.standard.set(try? PropertyListEncoder().encode(profile), forKey: "user-profile")
+    }
+  }
+  
+  func persistSettings() {
+    UserDefaults.standard.set(try? PropertyListEncoder().encode(settings), forKey: "user-settings")
+  }
+  
+  func load() {
+    if let data = UserDefaults.standard.value(forKey: "user-profile") as? Data {
+      if let profile = try? PropertyListDecoder().decode(Profile.self, from: data) {
+        self.profile = profile
+      }
+    }
     
+    setRegistered()
+    
+    if let data = UserDefaults.standard.value(forKey: "user-settings") as? Data {
+      if let settings = try? PropertyListDecoder().decode(Settings.self, from: data) {
+        self.settings = settings
+      }
+    }
+  }
+  
+  func clear() {
+    UserDefaults.standard.removeObject(forKey: "user-profile")
+  }
+  
+  var isUserNameValid: Bool {
+    profile.name.count >= 3
   }
 }
 
