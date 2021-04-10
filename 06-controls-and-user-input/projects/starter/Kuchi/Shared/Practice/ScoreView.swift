@@ -42,11 +42,11 @@ struct ScoreView: View {
 
   var body: some View {
     Button(action: {
-      self._numberOfAnswered.wrappedValue += 1
-      logger.info("Answered: \(self._numberOfAnswered.wrappedValue)")
+      self.numberOfAnswered += 1
+      logger.info("Answered: \(self.numberOfAnswered)")
     }, label: {
       HStack {
-        Text("\(_numberOfAnswered.wrappedValue)/\(numberOfQuestions)")
+        Text("\(numberOfAnswered)/\(numberOfQuestions)")
           .font(.caption)
           .padding(4)
         Spacer()
