@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		09747E3C261E514B0084E137 /* HorizontallyAlignedLabelStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57472F8B2533B85800F47C29 /* HorizontallyAlignedLabelStyle.swift */; };
 		09747E3F261E51630084E137 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09FB7F25260C9EF600A3658B /* RegisterView.swift */; };
+		09747E45261ECB930084E137 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09747E44261ECB930084E137 /* ScoreView.swift */; };
+		09747E46261ECB930084E137 /* ScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09747E44261ECB930084E137 /* ScoreView.swift */; };
 		097D852C260D8AD900FE92EB /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097D8528260D8AD900FE92EB /* HistoryView.swift */; };
 		097D852D260D8AD900FE92EB /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097D8528260D8AD900FE92EB /* HistoryView.swift */; };
 		097D852E260D8AD900FE92EB /* StarterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 097D8529260D8AD900FE92EB /* StarterView.swift */; };
@@ -58,6 +60,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09747E44261ECB930084E137 /* ScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreView.swift; sourceTree = "<group>"; };
 		097D8528260D8AD900FE92EB /* HistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		097D8529260D8AD900FE92EB /* StarterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarterView.swift; sourceTree = "<group>"; };
 		097D8537260D8C0200FE92EB /* ChoicesRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoicesRow.swift; sourceTree = "<group>"; };
@@ -118,6 +121,7 @@
 				097D8539260D8C0200FE92EB /* CongratulationsView.swift */,
 				097D853C260D8C0300FE92EB /* PracticeView.swift */,
 				097D853A260D8C0200FE92EB /* QuestionView.swift */,
+				09747E44261ECB930084E137 /* ScoreView.swift */,
 			);
 			path = Practice;
 			sourceTree = "<group>";
@@ -333,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09747E45261ECB930084E137 /* ScoreView.swift in Sources */,
 				09FB7EF4260C8F5A00A3658B /* WelccomeBackgroundImage.swift in Sources */,
 				097D853E260D8C0300FE92EB /* ChoicesRow.swift in Sources */,
 				09FB7EEB260C41C200A3658B /* UserManager.swift in Sources */,
@@ -373,6 +378,7 @@
 				09FB7F1D260C9B9100A3658B /* LogoImage.swift in Sources */,
 				09FB7EEE260C41C200A3658B /* Profile.swift in Sources */,
 				097D8549260D8C0300FE92EB /* PracticeView.swift in Sources */,
+				09747E46261ECB930084E137 /* ScoreView.swift in Sources */,
 				097D854B260D8C0300FE92EB /* ChoicesView.swift in Sources */,
 				097D8543260D8C0300FE92EB /* CongratulationsView.swift in Sources */,
 				097D8541260D8C0300FE92EB /* ChallengeView.swift in Sources */,
