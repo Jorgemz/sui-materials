@@ -35,7 +35,7 @@ import SwiftUI
 struct ChallengeView: View {
   let challengeTest: ChallengeTest
   @State var showAnswers = false
-  
+
   var body: some View {
     VStack {
       Button(action: {
@@ -44,7 +44,7 @@ struct ChallengeView: View {
         QuestionView(question: challengeTest.challenge.question)
           .frame(height: 300)
       }
-      ScoreView()
+      ScoreView(numberOfQuestions: 5)
       if showAnswers {
         Divider()
         ChoicesView(challengeTest: challengeTest)

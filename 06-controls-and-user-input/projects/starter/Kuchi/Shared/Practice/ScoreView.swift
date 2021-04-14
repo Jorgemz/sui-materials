@@ -35,7 +35,7 @@ import os
 
 struct ScoreView: View {
   let logger = Logger(subsystem: "com.dserweb.scoreView", category: "scoreview")
-  var numberOfQuestions = 5
+  let numberOfQuestions: Int
   
   //var _numberOfAnswered = State<Int>(initialValue: 0)
   @State var numberOfAnswered = 0
@@ -53,6 +53,6 @@ struct ScoreView: View {
 
 struct ScoreView_Previews: PreviewProvider {
   static var previews: some View {
-    ScoreView()
+    ScoreView(numberOfQuestions: 5)
   }
 }
