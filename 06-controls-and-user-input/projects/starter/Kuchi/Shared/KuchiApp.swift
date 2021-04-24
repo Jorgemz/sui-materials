@@ -45,6 +45,7 @@ struct KuchiApp: App {
       StarterView()
 //      RegisterView(keyboardHandler: KeyboardFollower())
         .environmentObject(userManager)
+        .environmentObject(ChallengesViewModel())
     }
   }
 }
