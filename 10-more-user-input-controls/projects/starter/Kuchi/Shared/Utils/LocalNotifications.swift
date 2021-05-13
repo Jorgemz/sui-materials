@@ -49,7 +49,7 @@ class LocalNotifications {
   }
   
   func createReminder(time: Date) {
-    deleteReminder()
+    self.deleteReminder()
     self.userNotificationCenter.getNotificationSettings { settings in
       let content = UNMutableNotificationContent()
       content.title = "Kuchi"
