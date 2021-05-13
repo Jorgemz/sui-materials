@@ -58,3 +58,4 @@ struct KuchiApp_Previews: PreviewProvider {
     RegisterView(keyboardHandler: KeyboardFollower())
   }
 }
+//..
