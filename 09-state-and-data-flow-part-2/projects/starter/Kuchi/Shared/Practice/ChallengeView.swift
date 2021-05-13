@@ -33,26 +33,54 @@
 import SwiftUI
 
 struct ChallengeView: View {
+
   let challengeTest: ChallengeTest
 
   @State var showAnswers = false
-
+  @Binding var numberOfAnswered: Int
+  @Environment(\.verticalSizeClass) var verticalSizeClass
+  @Environment(\.questionsPerSession) var questionsPerSession
+  
+  @ViewBuilder
   var body: some View {
-    VStack {
-      Button(action: {
-        self.showAnswers.toggle()
-      }) {
-        QuestionView(question: challengeTest.challenge.question)
-          .frame(height: 300)
+    if verticalSizeClass == .compact {
+      VStack {
+        HStack {
+          Button(action: {
+            self.showAnswers = !self.showAnswers
+          }) {
+            QuestionView(
+              question: challengeTest.challenge.question)
+          }
+          if showAnswers {
+            Divider()
+            ChoicesView(challengeTest: challengeTest)
+          }
+        }
+        ScoreView(
+          numberOfQuestions: questionsPerSession,
+          numberOfAnswered: $numberOfAnswered
+        )
       }
-
-      ScoreView(numberOfQuestions: 5)
-
-      if showAnswers {
-        Divider()
-        ChoicesView(challengeTest: challengeTest)
-          .frame(height: 300)
-          .padding()
+    } else {
+      VStack {
+        Button(action: {
+          self.showAnswers = !self.showAnswers
+        }) {
+          QuestionView(
+            question: challengeTest.challenge.question)
+            .frame(height: 300)
+        }
+        ScoreView(
+          numberOfQuestions: questionsPerSession,
+          numberOfAnswered: $numberOfAnswered
+        )
+        if showAnswers {
+          Divider()
+          ChoicesView(challengeTest: challengeTest)
+            .frame(height: 300)
+            .padding()
+        }
       }
     }
   }
@@ -60,7 +88,7 @@ struct ChallengeView: View {
 
 
 struct ChallengeView_Previews: PreviewProvider {
-  // 1
+  @State static var numberOfAnswered: Int = 0
   static let challengeTest = ChallengeTest(
     challenge: Challenge(
       question: "おねがい　します",
@@ -71,7 +99,6 @@ struct ChallengeView_Previews: PreviewProvider {
   )
 
   static var previews: some View {
-    // 2
-    return ChallengeView(challengeTest: challengeTest)
+    return ChallengeView(challengeTest: challengeTest, numberOfAnswered:  $numberOfAnswered)
   }
 }
