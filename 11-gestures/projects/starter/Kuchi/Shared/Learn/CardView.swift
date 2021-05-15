@@ -1,4 +1,4 @@
-/// Copyright (c) 2020 Razeware LLC
+/// Copyright (c) 2021 Razeware LLC
 /// 
 /// Permission is hereby granted, free of charge, to any person obtaining a copy
 /// of this software and associated documentation files (the "Software"), to deal
@@ -32,53 +32,52 @@
 
 import SwiftUI
 
-struct HomeView: View {
-  @EnvironmentObject var userManager: UserManager
-  @EnvironmentObject var challengesViewModel: ChallengesViewModel
-  @AppStorage("learningEnabled") var learningEnabled: Bool = true
+struct CardView: View {
+  let flashCard: FlashCard
+  @Binding var cardColor: Color
+  
+  init(
+    _ card: FlashCard,
+    cardColor: Binding<Color>
+  ) {
+    self.flashCard = card
+    self._cardColor = cardColor
+  }
   
   var body: some View {
-    TabView {
-      if learningEnabled {
-        LearnView()
-          .tabItem{
-            VStack {
-              Image(systemName: "bookmark")
-              Text("Learn")
-            }
-          }
-          .tag(0)
+    ZStack {
+      Rectangle()
+        .fill(cardColor)
+        .frame(width: 320, height: 210)
+        .cornerRadius(12)
+      VStack {
+        Spacer()
+        Text(flashCard.card.question)
+          .font(.largeTitle)
+          .foregroundColor(.white)
+        Text(flashCard.card.answer)
+          .font(.caption)
+          .foregroundColor(.white)
+        Spacer()
       }
-      PracticeView(
-        challengeTest: $challengesViewModel.currentChallenge,
-        userName: $userManager.profile.name,
-        numberOfAnswered: .constant(challengesViewModel.numberOfAnswered)
-      )
-      .tabItem({
-        VStack {
-          Image(systemName: "rectangle.dock")
-          Text("Challenge")
-        }
-      })
-      .tag(1)
-      
-      SettingsView()
-        .tabItem({
-          VStack {
-            Image(systemName: "gear")
-            Text("Settings")
-          }
-        })
-        .tag(2)
     }
-    .accentColor(.orange)
+    .shadow(radius: 8)
+    .frame(width: 320, height: 210)
+    .animation(.spring())
   }
 }
 
-struct HomeView_Previews: PreviewProvider {
+struct CardView_Previews: PreviewProvider {
+  @State static var cardColor = Color.red
+  
   static var previews: some View {
-    HomeView()
-      .environmentObject(UserManager())
-      .environmentObject(ChallengesViewModel())    
+    let card = FlashCard(
+      card: Challenge(
+        question: "Apple",
+        pronunciation: "Apple",
+        answer: "Omena"
+      )
+    )
+    return CardView(card, cardColor: $cardColor)
   }
 }
