@@ -55,7 +55,9 @@ struct WelcomeView: View {
             Text(verbatim: "Start")
           }
         }
+        .accessibilityElement(children: .combine)
       }
+      .accessibilityHint(Text("start playing Kuchi"))
     }
   }
 }

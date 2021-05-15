@@ -35,29 +35,31 @@ import SwiftUI
 struct RegisterView: View {
   @EnvironmentObject var userManager: UserManager
   @StateObject var keyboardHandler = KeyboardFollower()
-
+  
   var body: some View {
     VStack {
       Spacer()
-
+      
       WelcomeMessageView()
-
-      TextField("Type your name...", text: $userManager.profile.name)
+      
+      TextField("Type your name", text: $userManager.profile.name)
         .bordered()
-
+      
       HStack {
         Spacer()
         Text("\(userManager.profile.name.count)")
+          .accessibilityLabel(Text("name has \(userManager.profile.name.count) letters"))
+          .accessibilityHint(Text("name needs 3 or more letters to enable OK button"))
           .font(.caption)
           .foregroundColor(
             userManager.isUserNameValid() ? .green : .red)
           .padding(.trailing)
       }
       .padding(.bottom)
-
+      
       HStack {
         Spacer()
-
+        
         Toggle(isOn: $userManager.settings.rememberUser) {
           Text("Remember me")
             .font(.subheadline)
@@ -65,7 +67,7 @@ struct RegisterView: View {
         }
         .fixedSize()
       }
-
+      
       Button(action: self.registerUser) {
         HStack {
           Image(systemName: "checkmark")
@@ -76,6 +78,9 @@ struct RegisterView: View {
             .bold()
         }
       }
+      .accessibilityValue(userManager.isUserNameValid() ? "enabled" : "disabled")
+      .accessibilityLabel(Text("OK registers user"))
+      .accessibilityHint(Text("name needs 3 or more letters to enable this button"))
       .bordered()
       .disabled(!userManager.isUserNameValid())
       Spacer()
@@ -95,7 +100,7 @@ extension RegisterView {
     } else {
       userManager.clear()
     }
-
+    
     userManager.persistSettings()
     userManager.setRegistered()
   }
@@ -103,7 +108,7 @@ extension RegisterView {
 
 struct RegisterView_Previews: PreviewProvider {
   static let user = UserManager(name: "Ray")
-
+  
   static var previews: some View {
     RegisterView(keyboardHandler: KeyboardFollower())
       .environmentObject(user)

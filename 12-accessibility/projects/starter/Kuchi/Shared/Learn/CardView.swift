@@ -34,14 +34,14 @@ import SwiftUI
 
 struct CardView: View {
   typealias CardDrag = (_ card: FlashCard, _ direction: DiscardedDirection) -> Void
-
+  
   let dragged: CardDrag
   let flashCard: FlashCard
   @State var revealed = false
   @State var offset: CGSize = .zero
   @GestureState var isLongPressed = false
   @Binding var cardColor: Color
-
+  
   init(
     _ card: FlashCard,
     cardColor: Binding<Color>,
@@ -51,7 +51,7 @@ struct CardView: View {
     self.dragged = dragged
     self._cardColor = cardColor
   }
-
+  
   func discardCard(to direction: DiscardedDirection) {
     let width: CGFloat
     switch direction {
@@ -61,7 +61,7 @@ struct CardView: View {
     offset = .init(width: width, height: 0)
     dragged(flashCard, direction)
   }
-
+  
   var body: some View {
     let drag = DragGesture()
       .onChanged { offset = $0.translation }
@@ -74,51 +74,68 @@ struct CardView: View {
           offset = .zero
         }
       }
-
+    
     let longPress = LongPressGesture()
       .updating($isLongPressed) { value, state, _ in
         state = value
       }
       .simultaneously(with: drag)
-
-    ZStack {
-      Rectangle()
-        .fill(cardColor)
-        .frame(width: 320, height: 210)
-        .cornerRadius(12)
-      VStack {
-        Spacer()
-        Text(flashCard.card.question)
-          .font(.largeTitle)
-          .foregroundColor(.white)
-        if self.revealed {
-          Text(flashCard.card.answer)
-            .font(.caption)
+    
+    VStack {
+      ZStack{
+        Rectangle()
+          .fill(cardColor)
+          .frame(width: 320, height: 210)
+          .cornerRadius(12)
+        VStack {
+          Spacer()
+          Text(flashCard.card.question)
+            .font(.largeTitle)
             .foregroundColor(.white)
+          if self.revealed {
+            Text(flashCard.card.answer)
+              .font(.caption)
+              .foregroundColor(.white)
+          }
+          Spacer()
+        }
+      }
+      .shadow(radius: 8)
+      .frame(width: 320, height: 210)
+      .animation(.spring())
+      .gesture(
+        TapGesture()
+          .onEnded {
+            withAnimation(.easeIn) {
+              revealed.toggle()
+            }
+          }
+      )
+      .simultaneousGesture(longPress)
+      .scaleEffect(isLongPressed ? 1.1 : 1)
+      .offset(offset)
+      
+      HStack {
+        Button { discardCard(to: .left) } label: {
+          Image(systemName: "arrowshape.turn.up.left.circle")
+            .accessibilityLabel(Text("Swipes left"))
         }
         Spacer()
-      }
-    }
-    .shadow(radius: 8)
-    .frame(width: 320, height: 210)
-    .animation(.spring())
-    .gesture(
-      TapGesture()
-        .onEnded {
-          withAnimation(.easeIn) {
-            revealed.toggle()
-          }
+        Button { discardCard(to: .right) } label: {
+          Image(systemName: "arrowshape.turn.up.right.circle")
+            .accessibilityLabel(Text("Swipes right"))
         }
-    )
-    .simultaneousGesture(longPress)
-    .scaleEffect(isLongPressed ? 1.1 : 1)
+      }
+      .padding(45)
+      .font(.largeTitle)
+    }
     .offset(offset)
   }
 }
 
 struct CardView_Previews: PreviewProvider {
   @State static var cardColor = Color.red
-
+  
   static var previews: some View {
     let card = FlashCard(
       card: Challenge(
