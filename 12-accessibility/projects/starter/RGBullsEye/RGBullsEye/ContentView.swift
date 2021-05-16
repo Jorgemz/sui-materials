@@ -36,12 +36,12 @@ struct ContentView: View {
   @State var game = Game()
   @State var guess: RGB
   @State var showScore = false
-
+  
   let circleSize: CGFloat = 0.5
   let labelWidth: CGFloat = 0.53
   let labelHeight: CGFloat = 0.06
   let buttonWidth: CGFloat = 0.87
-
+  
   var body: some View {
     GeometryReader { geometry in
       ZStack {
@@ -56,6 +56,7 @@ struct ContentView: View {
               text: "R: ??? G: ??? B: ???",
               width: geometry.size.width * labelWidth,
               height: geometry.size.height * labelHeight)
+              .accessibilityLabel(Text("Target red, green, blue values you must guess"))
           } else {
             BevelText(
               text: game.target.intString,
@@ -69,25 +70,26 @@ struct ContentView: View {
             text: guess.intString,
             width: geometry.size.width * labelWidth,
             height: geometry.size.height * labelHeight)
-          ColorSlider(value: $guess.red, trackColor: .red)
-          ColorSlider(value: $guess.green, trackColor: .green)
-          ColorSlider(value: $guess.blue, trackColor: .blue)
+            .accessibilityLabel(Text("Your guess: " + guess.accString))
+            .accessibilitySortPriority(2)
+          ColorSlider(value: $guess.red, trackColor: .red).accessibilitySortPriority(5)
+          ColorSlider(value: $guess.green, trackColor: .green).accessibilitySortPriority(4)
+          ColorSlider(value: $guess.blue, trackColor: .blue).accessibilitySortPriority(3)
           Button("Hit Me!") {
             showScore = true
             game.check(guess: guess)
           }
+          .accessibilitySortPriority(1)
           .buttonStyle(
             NeuButtonStyle(
               width: geometry.size.width * buttonWidth,
               height: geometry.size.height * labelHeight))
-          .alert(isPresented: $showScore) {
-            Alert(
-              title: Text("Your Score"),
-              message: Text(String(game.scoreRound)),
-              dismissButton: .default(Text("OK")) {
-                game.startNewRound()
-                guess = RGB()
-              })
+          .sheet(isPresented: $showScore) {
+            SuccessView(
+              game: $game,
+              score: game.scoreRound,
+              target: game.target,
+              guess: $guess)
           }
         }
         .font(.headline)
@@ -108,10 +110,12 @@ struct ColorSlider: View {
   var trackColor: Color
   var body: some View {
     HStack {
-      Text("0")
+      Text("0").accessibilityHidden(true)
       Slider(value: $value)
         .accentColor(trackColor)
+        .accessibilityValue(Text(String(describing: trackColor) + String(Int(value * 255))))
       Text("255")
+        .accessibilityHidden(true)
     }
     .font(.subheadline)
     .padding(.horizontal)
