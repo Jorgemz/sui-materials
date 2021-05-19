@@ -213,3 +213,6 @@ class FlightInformation: NSObject {
     self.history = []
   }
 }
+
+extension FlightInformation: Identifiable {
+}

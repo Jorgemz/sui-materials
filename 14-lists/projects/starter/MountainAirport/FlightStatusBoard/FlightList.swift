@@ -32,10 +32,14 @@ struct FlightList: View {
   var flights: [FlightInformation]
 
   var body: some View {
-    ForEach(flights, id: \.id) { flight in
-      NavigationLink(
-        destination: FlightDetails(flight: flight)) {
-        FlightRow(flight: flight)
+    ScrollView([.horizontal, .vertical]) {
+      VStack {
+        ForEach(flights) { flight in
+          NavigationLink(
+            destination: FlightDetails(flight: flight)) {
+            FlightRow(flight: flight)
+          }
+        }.navigationBarTitle("Flight Status")
       }
     }
   }
