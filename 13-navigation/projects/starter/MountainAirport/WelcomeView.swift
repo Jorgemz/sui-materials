@@ -34,27 +34,49 @@ import SwiftUI
 
 struct WelcomeView: View {
   @StateObject var flightInfo = FlightData()
-
+  @State var showNextFlight = false
+  @StateObject var lastFlightInfo = FlightNavigationInfo()
   var body: some View {
-    VStack(alignment: .leading) {
+    NavigationView {
       ZStack(alignment: .topLeading) {
-        // Background
         Image("welcome-background")
           .resizable()
           .aspectRatio(contentMode: .fill)
-          .frame(width: 375, height: 250)
-          .clipped()
-        //Title
-        VStack {
-          Text("Mountain Airport")
-            .font(.system(size: 28.0, weight: .bold))
-          Text("Flight Status")
-        }
+          .frame(height: 250)
+        VStack(alignment: .leading) {
+          if let id = lastFlightInfo.lastFlightId, let lastFlight = flightInfo.getFlightById(id) {
+            NavigationLink(
+              destination: FlightDetails(flight: lastFlight),
+              isActive: $showNextFlight
+            ) { EmptyView() }
+          }
+          NavigationLink(
+            destination: FlightStatusBoard(flights: flightInfo.getDaysFlights(Date()) ),
+            isActive: $showNextFlight ) {
+            WelcomeButtonView(
+              title: "Flight Status",
+              subTitle: "Departure and arrival information"
+            )
+          }
+          if let id = lastFlightInfo.lastFlightId, let lastFlight = flightInfo.getFlightById(id) {
+            Button(action: {
+              showNextFlight = true
+            }) {
+              WelcomeButtonView(
+                title: "Last Flight \(lastFlight.flightName)",
+                subTitle: "Show Next Flight Departing or Arriving at Airport"
+              )
+            }
+          }
+          Spacer()
+        }.font(.title)
         .foregroundColor(.white)
         .padding()
       }
-      Spacer()
-    }.font(.title)
+      .navigationBarTitle("Mountain Airport")
+      .navigationViewStyle(StackNavigationViewStyle())
+      .environmentObject(lastFlightInfo)
+    }
   }
 }
 

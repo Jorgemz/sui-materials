@@ -103,5 +103,6 @@ struct SuccessView_Previews: PreviewProvider {
       score: 95,
       target: RGB(),
       guess: .constant(RGB()))
+      
   }
 }
