@@ -38,8 +38,7 @@ struct AwardsView: View {
     flightNavigation.awardList
   }
   var awardColumns: [GridItem] {
-    [GridItem(.flexible(minimum: 150, maximum: 170)),
-    GridItem(.flexible(minimum: 150, maximum: 170))]
+    [GridItem(.adaptive(minimum: 150, maximum: 170))]
   }
 
   var body: some View {
