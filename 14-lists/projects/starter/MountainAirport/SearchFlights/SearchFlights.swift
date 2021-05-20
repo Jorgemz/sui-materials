@@ -48,23 +48,6 @@ struct SearchFlights: View {
 
     return matchingFlights
   }
-
-  struct HierarchicalFlightRow: Identifiable {
-    var label: String
-    var flight: FlightInformation?
-    var children: [HierarchicalFlightRow]?
-
-    var id = UUID()
-  }
-  
-  func hierarchicalFlightRowFromFlight(_ flight: FlightInformation)
-    -> HierarchicalFlightRow {
-    return HierarchicalFlightRow(
-      label: longDateFormatter.string(from: flight.localTime),
-      flight: flight,
-      children: nil
-    )
-  }
   
   var flightDates: [Date] {
     let allDates = matchingFlights.map { $0.localTime.dateOnly }
@@ -76,21 +59,6 @@ struct SearchFlights: View {
     matchingFlights.filter {
       Calendar.current.isDate($0.localTime, inSameDayAs: date)
     }
-  }
-  
-  var hierarchicalFlights: [HierarchicalFlightRow] {
-    var rows: [HierarchicalFlightRow] = []
-
-    for date in flightDates {
-      let newRow = HierarchicalFlightRow(
-        label: longDateFormatter.string(from: date),
-        children: flightsForDay(date: date).map {
-          hierarchicalFlightRowFromFlight($0)
-        }
-      )
-      rows.append(newRow)
-    }
-    return rows
   }
   
   var body: some View {
@@ -110,13 +78,23 @@ struct SearchFlights: View {
         .pickerStyle(SegmentedPickerStyle())
         TextField(" Search cities", text: $city)
           .textFieldStyle(RoundedBorderTextFieldStyle())
-        List(hierarchicalFlights, children: \.children) { row in
-          if let flight = row.flight {
-            SearchResultRow(flight: flight)
-          } else {
-            Text(row.label)
+        List {
+          ForEach(flightDates, id: \.hashValue) { date in
+            Section(
+              header: Text(longDateFormatter.string(from: date)),
+              footer:
+                HStack {
+                  Spacer()
+                  Text("Matching flights " +
+                        "\(flightsForDay(date: date).count)")
+                }
+            ) {
+              ForEach(flightsForDay(date: date)) { flight in
+                SearchResultRow(flight: flight)
+              }
+            }
           }
-        }
+        }.listStyle(InsetGroupedListStyle())
         Spacer()
       }.navigationBarTitle("Search Flights")
       .padding()
