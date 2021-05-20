@@ -37,16 +37,20 @@ struct AwardsView: View {
   var awardArray: [AwardInformation] {
     flightNavigation.awardList
   }
+  var awardColumns: [GridItem] {
+    [GridItem(.flexible(minimum: 150, maximum: 170)),
+    GridItem(.flexible(minimum: 150, maximum: 170))]
+  }
 
   var body: some View {
     ScrollView {
-      LazyVStack {
+      LazyVGrid(columns: awardColumns) {
         ForEach(awardArray, id: \.self) { award in
-          NavigationLink(
-            destination: AwardDetails(award: award)) {
+          NavigationLink(destination: AwardDetails(award: award)) {
             AwardCardView(award: award)
               .foregroundColor(.black)
-              .frame(width: 150, height: 220)
+              .aspectRatio(2/3, contentMode: .fit)
+
           }
         }
       }
