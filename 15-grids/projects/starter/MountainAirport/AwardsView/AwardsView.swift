@@ -32,6 +32,28 @@
 
 import SwiftUI
 
+struct AwardGrid: View {
+  var title: String
+  var awards: [AwardInformation]
+
+  var body: some View {
+    Section(
+      header: Text(title)
+        .font(.title)
+        .foregroundColor(.white)
+    ) {
+      ForEach(awards, id: \.self) { award in
+        NavigationLink(
+          destination: AwardDetails(award: award)) {
+          AwardCardView(award: award)
+            .foregroundColor(.black)
+            .aspectRatio(0.67, contentMode: .fit)
+        }
+      }
+    }
+  }
+}
+
 struct AwardsView: View {
   @EnvironmentObject var flightNavigation: AppEnvironment
   var awardArray: [AwardInformation] {
@@ -40,18 +62,26 @@ struct AwardsView: View {
   var awardColumns: [GridItem] {
     [GridItem(.adaptive(minimum: 150, maximum: 170))]
   }
+  
+  var activeAwards: [AwardInformation] {
+    awardArray.filter { $0.awarded }
+  }
+
+  var inactiveAwards: [AwardInformation] {
+    awardArray.filter { !$0.awarded }
+  }
 
   var body: some View {
     ScrollView {
       LazyVGrid(columns: awardColumns) {
-        ForEach(awardArray, id: \.self) { award in
-          NavigationLink(destination: AwardDetails(award: award)) {
-            AwardCardView(award: award)
-              .foregroundColor(.black)
-              .aspectRatio(2/3, contentMode: .fit)
-
-          }
-        }
+        AwardGrid(
+          title: "Awarded",
+          awards: activeAwards
+        )
+        AwardGrid(
+          title: "Not Awarded",
+          awards: inactiveAwards
+        )
       }
     }.padding()
     .background(
