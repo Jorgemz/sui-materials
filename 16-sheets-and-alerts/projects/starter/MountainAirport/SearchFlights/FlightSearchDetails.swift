@@ -34,6 +34,7 @@ import SwiftUI
 
 struct FlightSearchDetails: View {
   var flight: FlightInformation
+  @Binding var showModal: Bool
   @EnvironmentObject var lastFlightInfo: AppEnvironment
 
   var body: some View {
@@ -42,7 +43,13 @@ struct FlightSearchDetails: View {
         .resizable()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
       VStack(alignment: .leading) {
-        FlightDetailHeader(flight: flight)
+        HStack {
+          FlightDetailHeader(flight: flight)
+          Spacer()
+          Button("Close") {
+            self.showModal = false
+          }
+        }
         FlightInfoPanel(flight: flight)
           .padding()
           .background(
@@ -61,7 +68,8 @@ struct FlightSearchDetails: View {
 struct FlightSearchDetails_Previews: PreviewProvider {
   static var previews: some View {
     FlightSearchDetails(
-      flight: FlightData.generateTestFlight(date: Date())
+      flight: FlightData.generateTestFlight(date: Date()),
+      showModal: .constant(true)
     ).environmentObject(AppEnvironment())
   }
 }

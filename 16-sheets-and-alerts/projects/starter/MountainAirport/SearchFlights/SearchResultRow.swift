@@ -34,7 +34,8 @@ import SwiftUI
 
 struct SearchResultRow: View {
   var flight: FlightInformation
-
+  @State private var isPresented = false
+  
   var timeFormatter: DateFormatter {
     let tdf = DateFormatter()
     tdf.timeStyle = .short
@@ -43,7 +44,21 @@ struct SearchResultRow: View {
   }
 
   var body: some View {
-    FlightSearchDetails(flight: flight)
+    Button(
+      action: {
+        isPresented.toggle()
+      }, label: {
+        FlightSearchSummary(flight: flight)
+      })
+      .sheet(
+        isPresented: $isPresented,
+        onDismiss: {
+          print("Modal dismissed. State now: \(self.isPresented)")
+        },
+        content: {
+          FlightSearchDetails(flight: flight, showModal: $isPresented)
+        }
+      )
   }
 }
 
