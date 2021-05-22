@@ -81,8 +81,7 @@ struct FlightInfoPanel: View {
               .frame(width: 30, height: 30)
               .padding(10)
               .rotationEffect(.degrees(showTerminal ? 90 : 270))
-              .animation(.timingCurve(0, 0.8, 0.2, 1, duration: 1.0))
-
+              .animation(.interpolatingSpring(mass: 1, stiffness: 100, damping: 10, initialVelocity: 0))
           }
         })
         if showTerminal {
