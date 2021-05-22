@@ -66,9 +66,9 @@ struct FlightInfoPanel: View {
             Image(systemName: "airplane.circle")
               .resizable()
               .frame(width: 30, height: 30)
-              .padding(.trailing, 10)
+              .padding(10)
               .rotationEffect(.degrees(showTerminal ? 90 : 270))
-              .animation(.linear(duration: 1.0))
+              .animation(.spring(response: 0.55, dampingFraction: 0.45, blendDuration: 0))
             Spacer()
             Text(
               showTerminal ?
@@ -81,8 +81,6 @@ struct FlightInfoPanel: View {
               .frame(width: 30, height: 30)
               .padding(10)
               .rotationEffect(.degrees(showTerminal ? 90 : 270))
-              .animation(.linear(duration: 1))
-              .scaleEffect(showTerminal ? 1.5 : 1.0)
               .animation(.spring(response: 0.55, dampingFraction: 0.45, blendDuration: 0))
           }
         })
