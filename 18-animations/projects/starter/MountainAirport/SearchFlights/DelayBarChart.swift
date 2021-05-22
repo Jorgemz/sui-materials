@@ -31,21 +31,21 @@ import SwiftUI
 struct DelayBarChart: View {
   var flight: FlightInformation
   
-  @State private var showBars = CGFloat(0)
-
+  @State private var showBars = false
+  
   let minuteRange = CGFloat(75)
-
+  
   func minuteLength(_ minutes: Int, proxy: GeometryProxy) -> CGFloat {
     let pointsPerMinute = proxy.size.width / minuteRange
     return CGFloat(abs(minutes)) * pointsPerMinute
   }
-
+  
   func minuteOffset(_ minutes: Int, proxy: GeometryProxy) -> CGFloat {
     let pointsPerMinute = proxy.size.width / minuteRange
-    let offset = minutes < 0 ? 15 + minutes * Int(showBars) : 15
+    let offset = minutes < 0 ? 15 + minutes : 15
     return CGFloat(offset) * pointsPerMinute
   }
-
+  
   func chartGradient(_ history: FlightHistory) -> Gradient {
     if history.status == .canceled {
       return Gradient(
@@ -57,7 +57,7 @@ struct DelayBarChart: View {
         ]
       )
     }
-
+    
     if history.timeDifference <= 0 {
       return Gradient(colors: [Color.green])
     }
@@ -66,14 +66,18 @@ struct DelayBarChart: View {
     }
     return Gradient(colors: [Color.green, Color.yellow, Color.red])
   }
-
+  
   func minuteLocation(_ minutes: Int, proxy: GeometryProxy) -> CGFloat {
     let minMinutes = -15
     let pointsPerMinute = proxy.size.width / minuteRange
     let offset = CGFloat(minutes - minMinutes) * pointsPerMinute
     return offset
   }
-
+  
+  func barAnimation(_ barNumber: Int) -> Animation {
+    return Animation.easeInOut.delay(Double(barNumber) * 0.1)
+  }
+  
   var body: some View {
     VStack {
       ForEach(flight.history, id: \.day) { history in
@@ -89,13 +93,25 @@ struct DelayBarChart: View {
                   endPoint: .trailing
                 )
               )
-              .frame(width: minuteLength(history.timeDifference, proxy: proxy))
-              .offset(x: minuteOffset(history.timeDifference, proxy: proxy))
+              .frame(
+                width: showBars ?
+                  minuteLength(history.timeDifference, proxy: proxy) :
+                  0
+              )
+              .offset(
+                x: showBars ?
+                  minuteOffset(history.timeDifference, proxy: proxy) :
+                  minuteOffset(0, proxy: proxy)
+              )
+              .animation(barAnimation(history.day))
             ForEach(-1..<6) { val in
               Rectangle()
                 .stroke(val == 0 ? Color.white : Color.gray, lineWidth: 1.0)
                 .frame(width: 1)
                 .offset(x: minuteLocation(val * 10, proxy: proxy))
+                .animation(
+                  Animation.easeInOut.delay(Double(history.day) * 0.1)
+                )
             }
           }
         }
@@ -105,9 +121,7 @@ struct DelayBarChart: View {
         Color.white.opacity(0.2)
       )
       .onAppear {
-        withAnimation(Animation.default.delay(0.5)) {
-          showBars = CGFloat(1)
-        }
+        showBars = true
       }
     }
   }
