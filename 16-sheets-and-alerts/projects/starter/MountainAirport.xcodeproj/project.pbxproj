@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09D1A59F26576F7D005FD9B1 /* CheckInInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1A59E26576F7D005FD9B1 /* CheckInInfo.swift */; };
 		18D775C522AD944300AE281E /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D775C422AD944300AE281E /* WelcomeView.swift */; };
 		18D775C722AD944400AE281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C622AD944400AE281E /* Assets.xcassets */; };
 		18D775CA22AD944400AE281E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18D775C922AD944400AE281E /* Preview Assets.xcassets */; };
@@ -40,6 +41,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09D1A59E26576F7D005FD9B1 /* CheckInInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInInfo.swift; sourceTree = "<group>"; };
 		18D775BD22AD944300AE281E /* MountainAirport.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MountainAirport.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D775C422AD944300AE281E /* WelcomeView.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; tabWidth = 2; };
 		18D775C622AD944400AE281E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 		E6E2AE7B22D8D08600A3455A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				09D1A59E26576F7D005FD9B1 /* CheckInInfo.swift */,
 				A9E4623D2509B44700128AB1 /* AwardInformation.swift */,
 				A9E4623B2509B44600128AB1 /* FlightData.swift */,
 				A9E4623A2509B44500128AB1 /* FlightHistory.swift */,
@@ -306,6 +309,7 @@
 				A9CF242D2515240B00EA887E /* WelcomeButtonView.swift in Sources */,
 				A9CF24202515097D00EA887E /* FlightStatusBoard.swift in Sources */,
 				A9CB5E112539FCB4004253E8 /* FlightSearchSummary.swift in Sources */,
+				09D1A59F26576F7D005FD9B1 /* CheckInInfo.swift in Sources */,
 				A9E462432509B44800128AB1 /* AwardInformation.swift in Sources */,
 				A9DA2758250BCF9200A2262A /* MountainAirport.swift in Sources */,
 				A9E462402509B44800128AB1 /* FlightHistory.swift in Sources */,

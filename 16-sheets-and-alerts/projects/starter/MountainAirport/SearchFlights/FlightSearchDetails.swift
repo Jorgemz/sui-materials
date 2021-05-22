@@ -35,6 +35,9 @@ import SwiftUI
 struct FlightSearchDetails: View {
   var flight: FlightInformation
   @Binding var showModal: Bool
+  @State private var rebookAlert = false
+  @State private var checkInFlight: CheckInInfo?
+  @State private var showFlightHistory = false
   @EnvironmentObject var lastFlightInfo: AppEnvironment
 
   var body: some View {
@@ -50,6 +53,47 @@ struct FlightSearchDetails: View {
             self.showModal = false
           }
         }
+      
+        if flight.status == .canceled {
+          Button("Rebook Flight") {
+            rebookAlert = true
+          }
+          .alert(isPresented: $rebookAlert) {
+            Alert(
+              title: Text("Contact Your Airline"),
+              message: Text(
+                "We cannot rebook this flight. Please contact the airline to reschedule this flight."
+              )
+            )
+          }
+        }
+        
+        if flight.isCheckInAvailable {
+          Button("Check In for Flight") {
+            self.checkInFlight = CheckInInfo( airline: self.flight.airline, flight: self.flight.number)
+          }
+          .actionSheet(item: $checkInFlight) { flight in
+            ActionSheet(
+              title: Text("Check In"),
+              message: Text("Check in for \(flight.airline)" + "Flight \(flight.flight)"),
+              buttons: [
+                .cancel(Text("Not Now")),
+                .destructive(Text("Reschedule"), action: { print("Reschedule flight.") }),
+                .default(Text("Check In"), action: { print( "Check-in for \(flight.airline) \(flight.flight)." ) })
+              ]
+            )
+          }
+        }
+        
+        Button("On-Time History") {
+          showFlightHistory.toggle()
+        }
+        .popover(
+          isPresented: $showFlightHistory,
+          arrowEdge: .top) {
+          FlightTimeHistory(flight: self.flight)
+        }
+        
         FlightInfoPanel(flight: flight)
           .padding()
           .background(
