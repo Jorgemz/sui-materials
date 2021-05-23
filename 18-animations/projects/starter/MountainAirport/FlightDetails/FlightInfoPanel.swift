@@ -60,7 +60,9 @@ struct FlightInfoPanel: View {
         }
         Text(flight.flightStatus) + Text(" (\(timeFormatter.string(from: flight.localTime)))")
         Button(action: {
-          showTerminal.toggle()
+          withAnimation {
+            showTerminal.toggle()
+          }
         }, label: {
           HStack(alignment: .center) {
             Image(systemName: "airplane.circle")
@@ -70,11 +72,14 @@ struct FlightInfoPanel: View {
               .rotationEffect(.degrees(showTerminal ? 90 : 270))
               .animation(.spring(response: 0.55, dampingFraction: 0.45, blendDuration: 0))
             Spacer()
-            Text(
-              showTerminal ?
-                "Hide Terminal Map" :
-                "Show Terminal Map"
-            )
+            Group {
+              if showTerminal {
+                Text("Hide Terminal Map")
+              } else {
+                Text("Show Terminal Map")
+              }
+            }
+            .transition(.move(edge: .bottom))
             Spacer()
             Image(systemName: "airplane.circle")
               .resizable()
@@ -86,6 +91,7 @@ struct FlightInfoPanel: View {
         })
         if showTerminal {
           FlightTerminalMap(flight: flight)
+            .transition(.buttonNameTransition)
         }
         Spacer()
       }
@@ -99,4 +105,14 @@ struct FlightInfoPanel_Previews: PreviewProvider {
       flight: FlightData.generateTestFlight(date: Date())
     )
   }
+}
+
+extension AnyTransition {
+  static var buttonNameTransition: AnyTransition {
+      let insertion = AnyTransition.move(edge: .trailing)
+        .combined(with: .opacity)
+      let removal = AnyTransition.scale(scale: 0.0)
+        .combined(with: .opacity)
+      return .asymmetric(insertion: insertion, removal: removal)
+    }
 }
