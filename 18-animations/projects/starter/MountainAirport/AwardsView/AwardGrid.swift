@@ -31,7 +31,9 @@ import SwiftUI
 struct AwardGrid: View {
   var title: String
   var awards: [AwardInformation]
-
+  @Binding var selectedAward: AwardInformation?
+  var namespace: Namespace.ID
+  
   var body: some View {
     Section(
       header: Text(title)
@@ -43,6 +45,12 @@ struct AwardGrid: View {
           AwardCardView(award: award)
             .foregroundColor(.black)
             .aspectRatio(0.67, contentMode: .fit)
+            .onTapGesture {
+              withAnimation {
+                selectedAward = award
+              }
+            }
+            .matchedGeometryEffect(id: award.hashValue, in: namespace, anchor: .topLeading)
         }
       }
     }
@@ -50,10 +58,11 @@ struct AwardGrid: View {
 }
 
 struct AwardGrid_Previews: PreviewProvider {
+  @Namespace static var namespace
   static var previews: some View {
     AwardGrid(
       title: "Test",
-      awards: AppEnvironment().awardList
+      awards: AppEnvironment().awardList, selectedAward: .constant(nil), namespace: namespace
     )
   }
 }
