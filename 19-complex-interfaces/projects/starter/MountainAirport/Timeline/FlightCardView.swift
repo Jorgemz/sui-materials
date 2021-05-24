@@ -125,6 +125,10 @@ struct FlightCardView: View {
       }
       
     }
+    .padding()
+    .background(Color.gray.opacity(0.3))
+    .clipShape(RoundedRectangle(cornerRadius: 20))
+    .overlay(RoundedRectangle(cornerRadius: 20).stroke())
   }
 }
 

@@ -38,7 +38,7 @@ struct TimelineView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
       ScrollView {
         VStack {
-          GenericTimeline(events: flights) { flight in
+          GenericTimeline(events: flights, timeProperty: \.localTime) { flight in
             FlightCardView(flight: flight)
           }
         }
