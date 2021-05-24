@@ -28,16 +28,16 @@
 
 import SwiftUI
 
-struct GenericTimeline<Content: View>: View {
-  let flights: [FlightInformation]
-  let content: (FlightInformation) -> Content
+struct GenericTimeline<Content: View, T>: View {
+  let events: [T]
+  let content: (T) -> Content
 
   // 2
   init(
-    flights: [FlightInformation],
-    @ViewBuilder content: @escaping (FlightInformation) -> Content
+    events: [T],
+    @ViewBuilder content: @escaping (T) -> Content
   ) {
-    self.flights = flights
+    self.events = events
     self.content = content
   }
 
@@ -45,8 +45,8 @@ struct GenericTimeline<Content: View>: View {
   var body: some View {
     ScrollView {
       VStack {
-        ForEach(flights) { flight in
-          content(flight)
+        ForEach(events.indices) { index in
+          content(events[index])
         }
       }
     }
@@ -55,7 +55,7 @@ struct GenericTimeline<Content: View>: View {
 
 struct GenericTimeline_Previews: PreviewProvider {
     static var previews: some View {
-      GenericTimeline(flights: FlightData.generateTestFlights(date: Date())) {
+      GenericTimeline(events: FlightData.generateTestFlights(date: Date())) {
         flight in
         FlightCardView(flight: flight)
       }
