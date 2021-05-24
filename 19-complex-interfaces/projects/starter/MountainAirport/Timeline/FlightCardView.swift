@@ -54,6 +54,22 @@ struct ArrivalTimeView: View {
   }
 }
 
+struct FlightProgressView: View {
+  var flight: FlightInformation
+  var progress: CGFloat
+  
+  var body: some View {
+    GeometryReader { proxy in
+      Image(systemName: "airplane")
+        .resizable()
+        .offset(x: proxy.size.width * progress)
+        .frame(width: 20, height: 20)
+        .foregroundColor(flight.statusColor)
+    }
+    .padding([.trailing], 20)
+  }
+}
+
 struct FlightCardView: View {
   var flight: FlightInformation
   
@@ -63,7 +79,7 @@ struct FlightCardView: View {
     return abs(minute)
   }
   
-  func flighttimeFraction(flight: FlightInformation) -> CGFloat {
+  func flightTimeFraction(flight: FlightInformation) -> CGFloat {
     let now = Date()
     if flight.direction == .departure {
       if flight.localTime > now {
@@ -104,7 +120,7 @@ struct FlightCardView: View {
       
       HStack(alignment: .bottom) {
         DepartureTimeView(flight: flight)
-        Spacer()
+        FlightProgressView(flight: flight, progress: flightTimeFraction(flight: flight))
         ArrivalTimeView(flight: flight)
       }
       
