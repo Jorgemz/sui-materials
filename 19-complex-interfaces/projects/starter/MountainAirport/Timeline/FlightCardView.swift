@@ -28,16 +28,86 @@
 
 import SwiftUI
 
+struct DepartureTimeView: View {
+  var flight: FlightInformation
+  
+  var body: some View {
+    VStack {
+      if flight.direction == .arrival {
+        Text(flight.otherAirport)
+      }
+      Text(shortTimeFormatter.string(from: flight.departureTime))
+    }
+  }
+}
+
+struct ArrivalTimeView: View {
+  var flight: FlightInformation
+  
+  var body: some View {
+    VStack {
+      if flight.direction == .departure {
+        Text(flight.otherAirport)
+      }
+      Text(shortTimeFormatter.string(from: flight.arrivalTime))
+    }
+  }
+}
+
 struct FlightCardView: View {
   var flight: FlightInformation
+  
+  func minutesBetween(_ start: Date, and end: Date) -> Int {
+    let diff = Calendar.current.dateComponents([.minute], from: start, to: end)
+    guard let minute = diff.minute else { return 0 }
+    return abs(minute)
+  }
+  
+  func flighttimeFraction(flight: FlightInformation) -> CGFloat {
+    let now = Date()
+    if flight.direction == .departure {
+      if flight.localTime > now {
+        return 0.0
+      }
+      else if flight.otherEndTime < now {
+        return 1.0
+      }
+      else {
+        let timeInFlight = minutesBetween(flight.localTime, and: now)
+        let fraction = Double(timeInFlight) / Double(flight.flightTime)
+        return CGFloat(fraction)
+      }
+    }
+    else {
+      if flight.otherEndTime > now {
+        return 0.0
+      }
+      else if flight.localTime < now {
+        return 1.0
+      }
+      else {
+        let timeInFlight = minutesBetween(flight.otherEndTime, and: now)
+        let fraction = Double(timeInFlight) / Double(flight.flightTime)
+        return CGFloat(fraction)
+      }
+    }
+  }
 
   var body: some View {
     VStack {
+      
       HStack {
         Spacer()
         Text(flight.statusBoardName)
         Spacer()
       }
+      
+      HStack(alignment: .bottom) {
+        DepartureTimeView(flight: flight)
+        Spacer()
+        ArrivalTimeView(flight: flight)
+      }
+      
     }
   }
 }
