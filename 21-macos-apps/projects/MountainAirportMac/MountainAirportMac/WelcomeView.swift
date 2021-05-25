@@ -32,75 +32,73 @@
 
 import SwiftUI
 
+enum DisplayState: Int {
+  case none
+  case flightBoard
+  case searchFlights
+  case awards
+  case lastFlight
+}
+
 struct WelcomeView: View {
-  @StateObject var flightInfo = FlightData()
+  var flightInfo: FlightData
   @State var showNextFlight = false
   @StateObject var appEnvironment = AppEnvironment()
+  
+  @SceneStorage("displayState") var displayState: DisplayState = .none
+  @SceneStorage("lastViewedFlightID") var lastViewedFlightID: Int?
 
-  var body: some View {
-    NavigationView {
-      ZStack(alignment: .topLeading) {
-        Image("welcome-background")
-          .resizable()
-          .aspectRatio(contentMode: .fill)
-          .frame(height: 250)
-        if
-          let id = appEnvironment.lastFlightId,
-          let lastFlight = flightInfo.getFlightById(id) {
-          NavigationLink(
-            destination: FlightDetails(flight: lastFlight),
-            isActive: $showNextFlight
-          ) { }
-        }
-        ScrollView {
-          LazyVGrid(
-            columns: [
-              GridItem(.fixed(160)),
-              GridItem(.fixed(160))
-            ], spacing: 15
-          ) {
-            NavigationLink(
-              destination: FlightStatusBoard(
-                flights: flightInfo.getDaysFlights(Date()))
-            ) {
-              FlightStatusButton()
-            }
-            NavigationLink(
-              destination: SearchFlights(
-                flightData: flightInfo.flights
-              )
-            ) {
-              SearchFlightsButton()
-            }
-            NavigationLink(
-              destination: AwardsView()
-            ) {
-              AwardsButton()
-            }
-            if
-              let id = appEnvironment.lastFlightId,
-              let lastFlight = flightInfo.getFlightById(id) {
-              // swiftlint:disable multiple_closures_with_trailing_closure
-              Button(action: {
-                showNextFlight = true
-              }) {
-                LastViewedButton(name: lastFlight.flightName)
-              }
-            }
-            Spacer()
-          }.font(.title)
-          .foregroundColor(.white)
-          .padding()
-        }
-      }.navigationTitle("Mountain Airport")
-      // End Navigation View
+  var lastViewedFlight: FlightInformation? {
+    if let id = lastViewedFlightID {
+      return flightInfo.getFlightById(id)
     }
-    .environmentObject(appEnvironment)
+    return nil
+  }
+  
+  var body: some View {
+    VStack {
+      Button {
+        displayState = .flightBoard
+      } label: {
+        FlightStatusButton()
+      }
+      .buttonStyle(PlainButtonStyle())
+      
+      Button {
+        displayState = .searchFlights
+      } label: {
+        SearchFlightsButton()
+      }
+      .buttonStyle(PlainButtonStyle())
+
+      Button {
+        displayState = .awards
+      } label: {
+        AwardsButton()
+      }
+      .buttonStyle(PlainButtonStyle())
+
+      if let lasFlight = lastViewedFlight {
+        Button {
+          displayState = .lastFlight
+          showNextFlight = true
+        } label: {
+          LastViewedButton(name: lasFlight.flightName)
+        }
+        .buttonStyle(PlainButtonStyle())
+      }
+      Spacer()
+    }
+    .padding()
+    .frame(minWidth: 190, idealWidth: 190, maxWidth: 190, minHeight: 630, idealHeight: 630, maxHeight: .infinity)
+    .background( Image("welcome-background").resizable().aspectRatio(contentMode: .fill))
   }
 }
 
 struct WelcomeView_Previews: PreviewProvider {
   static var previews: some View {
-    WelcomeView()
+    WelcomeView(flightInfo: FlightData())
+      .previewLayout(.fixed(width: 190, height: 630))
+    
   }
 }

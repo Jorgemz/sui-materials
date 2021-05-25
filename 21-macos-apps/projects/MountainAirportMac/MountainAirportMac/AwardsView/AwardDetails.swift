@@ -33,6 +33,7 @@
 import SwiftUI
 
 struct AwardDetails: View {
+  @Environment(\.presentationMode) var presentationMode
   var award: AwardInformation
 
   func imageSize(proxy: GeometryProxy) -> CGFloat {
@@ -42,6 +43,16 @@ struct AwardDetails: View {
 
   var body: some View {
     VStack(alignment: .center) {
+      HStack {
+        Spacer()
+        Button(action: {
+          presentationMode.wrappedValue.dismiss()
+        }, label: {
+          Image(systemName: "xmark.circle")
+            .font(.largeTitle)
+        })
+        .buttonStyle(PlainButtonStyle())
+      }
       Image(award.imageName)
         .resizable()
         .aspectRatio(contentMode: .fit)

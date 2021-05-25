@@ -43,6 +43,7 @@ struct SearchResultRow: View {
       }, label: {
         FlightSearchSummary(flight: flight)
       })
+      .buttonStyle(PlainButtonStyle())
       .sheet(
         isPresented: $isPresented,
         onDismiss: {

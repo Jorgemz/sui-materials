@@ -13,5 +13,8 @@ struct MountainAirportMacApp: App {
         WindowGroup {
             ContentView()
         }
+        .commands {
+          SidebarCommands()
+        }
     }
 }

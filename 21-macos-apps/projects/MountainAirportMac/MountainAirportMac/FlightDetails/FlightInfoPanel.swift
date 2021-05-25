@@ -69,6 +69,7 @@ struct FlightInfoPanel: View {
           Text("Flying to \(flight.otherAirport)")
         }
         Text(flight.flightStatus) + Text(" (\(timeFormatter.string(from: flight.localTime)))")
+        
         Button(action: {
           withAnimation {
             showTerminal.toggle()
@@ -104,6 +105,8 @@ struct FlightInfoPanel: View {
               )
           }
         })
+        .buttonStyle(PlainButtonStyle())
+        
         if showTerminal {
           FlightTerminalMap(flight: flight)
             .transition(.flightTerminalMapTransition)

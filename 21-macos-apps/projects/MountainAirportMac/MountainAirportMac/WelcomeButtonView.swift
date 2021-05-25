@@ -57,7 +57,7 @@ struct WelcomeButtonView: View {
         .font(.subheadline)
     }.foregroundColor(.white)
     .padding()
-    .frame(width: 155, height: 220, alignment: .leading)
+    .frame(width: 155, height: 155, alignment: .leading)
     .background(
       Image("link-pattern")
         .resizable()

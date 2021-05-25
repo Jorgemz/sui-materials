@@ -43,18 +43,18 @@ struct AwardGrid: View {
         .foregroundColor(.white)
     ) {
       ForEach(awards, id: \.self) { award in
-        NavigationLink(destination: AwardDetails(award: award)) {
-          AwardCardView(award: award)
-            .foregroundColor(.black)
-            .aspectRatio(0.67, contentMode: .fit)
-        }
+        AwardCardView(award: award)
+          .foregroundColor(.black)
+          .aspectRatio(0.67, contentMode: .fit)
+        
       }
     }
   }
 }
 
 struct AwardsView: View {
-  @EnvironmentObject var flightNavigation: AppEnvironment
+  @State var flightNavigation = AppEnvironment()
+
   var awardArray: [AwardInformation] {
     flightNavigation.awardList
   }

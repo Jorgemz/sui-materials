@@ -38,8 +38,8 @@ struct FlightSearchDetails: View {
   @State private var rebookAlert = false
   @State private var checkInFlight: CheckInInfo?
   @State private var showFlightHistory = false
-  @EnvironmentObject var lastFlightInfo: AppEnvironment
-
+  @SceneStorage("lastViewedFlightID") var lastViewedFlightID: Int?
+  
   var body: some View {
     ZStack {
       Image("background-view")
@@ -47,7 +47,7 @@ struct FlightSearchDetails: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
       VStack(alignment: .leading) {
         HStack {
-          FlightDetailHeader(flight: flight)
+          FlightDetailHeader(flight: flight).foregroundColor(.white)
           Spacer()
           Button("Close") {
             self.showModal = false
@@ -101,17 +101,17 @@ struct FlightSearchDetails: View {
           arrowEdge: .top) {
           FlightTimeHistory(flight: self.flight)
         }
-        FlightInfoPanel(flight: flight)
+        FlightInfoPanel(flight: flight).foregroundColor(.white)
           .padding()
           .background(
             RoundedRectangle(cornerRadius: 20.0)
               .opacity(0.3)
           )
         Spacer()
-      }.foregroundColor(.white)
+      }
       .padding()
     }.onAppear {
-      lastFlightInfo.lastFlightId = flight.id
+      lastViewedFlightID = flight.id
     }
   }
 }

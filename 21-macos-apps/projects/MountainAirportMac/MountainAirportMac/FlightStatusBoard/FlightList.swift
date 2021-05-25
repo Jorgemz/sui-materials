@@ -33,6 +33,7 @@
 import SwiftUI
 
 struct FlightList: View {
+  @SceneStorage("selectedFlightID") var selectedFlightID: Int?
   var flights: [FlightInformation]
 
   var nextFlightId: Int {
@@ -50,16 +51,21 @@ struct FlightList: View {
   var body: some View {
     ScrollViewReader { scrollProxy in
       List(flights) { flight in
-        NavigationLink(
-          destination: FlightDetails(flight: flight)) {
+        
+        Button(action: {
+          selectedFlightID = flight.id
+        }, label: {
           FlightRow(flight: flight)
-        }
+        })
+        .buttonStyle(PlainButtonStyle())
+        
       }.onAppear {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-          scrollProxy.scrollTo(nextFlightId, anchor: .center)
+          scrollProxy.scrollTo(nextFlightId, anchor: .top)
         }
       }
     }
+    .frame(minWidth: 350)
   }
 }
 

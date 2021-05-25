@@ -35,7 +35,7 @@ import SwiftUI
 struct FlightStatusBoard: View {
   var flights: [FlightInformation]
   @State private var hidePast = false
-  @AppStorage("FlightStatusCurrentTab") var selectedTab = 1
+  @SceneStorage("FlightStatusCurrentTab") var selectedTab = 1
 
   var shownFlights: [FlightInformation] {
     hidePast ?
