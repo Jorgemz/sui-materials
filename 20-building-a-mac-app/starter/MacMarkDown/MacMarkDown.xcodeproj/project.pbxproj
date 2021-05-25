@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,8 @@
 		09D1A5B7265C7460005FD9B1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1A5B6265C7460005FD9B1 /* ContentView.swift */; };
 		09D1A5B9265C7462005FD9B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09D1A5B8265C7462005FD9B1 /* Assets.xcassets */; };
 		09D1A5BC265C7462005FD9B1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09D1A5BB265C7462005FD9B1 /* Preview Assets.xcassets */; };
+		09D1A5C6265C91CC005FD9B1 /* MarkdownKit in Frameworks */ = {isa = PBXBuildFile; productRef = 09D1A5C5265C91CC005FD9B1 /* MarkdownKit */; };
+		09D1A5C8265C94E5005FD9B1 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1A5C7265C94E5005FD9B1 /* WebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,7 @@
 		09D1A5BB265C7462005FD9B1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		09D1A5BD265C7462005FD9B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09D1A5BE265C7462005FD9B1 /* MacMarkDown.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacMarkDown.entitlements; sourceTree = "<group>"; };
+		09D1A5C7265C94E5005FD9B1 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +33,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09D1A5C6265C91CC005FD9B1 /* MarkdownKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +61,7 @@
 			children = (
 				09D1A5B2265C7460005FD9B1 /* MacMarkDownApp.swift */,
 				09D1A5B4265C7460005FD9B1 /* MacMarkDownDocument.swift */,
+				09D1A5C7265C94E5005FD9B1 /* WebView.swift */,
 				09D1A5B6265C7460005FD9B1 /* ContentView.swift */,
 				09D1A5B8265C7462005FD9B1 /* Assets.xcassets */,
 				09D1A5BD265C7462005FD9B1 /* Info.plist */,
@@ -90,6 +95,9 @@
 			dependencies = (
 			);
 			name = MacMarkDown;
+			packageProductDependencies = (
+				09D1A5C5265C91CC005FD9B1 /* MarkdownKit */,
+			);
 			productName = MacMarkDown;
 			productReference = 09D1A5AF265C7460005FD9B1 /* MacMarkDown.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 09D1A5A6265C7460005FD9B1;
+			packageReferences = (
+				09D1A5C4265C91CC005FD9B1 /* XCRemoteSwiftPackageReference "swift-markdownkit" */,
+			);
 			productRefGroup = 09D1A5B0265C7460005FD9B1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -144,6 +155,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09D1A5B3265C7460005FD9B1 /* MacMarkDownApp.swift in Sources */,
+				09D1A5C8265C94E5005FD9B1 /* WebView.swift in Sources */,
 				09D1A5B5265C7460005FD9B1 /* MacMarkDownDocument.swift in Sources */,
 				09D1A5B7265C7460005FD9B1 /* ContentView.swift in Sources */,
 			);
@@ -337,6 +349,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		09D1A5C4265C91CC005FD9B1 /* XCRemoteSwiftPackageReference "swift-markdownkit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/objecthub/swift-markdownkit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		09D1A5C5265C91CC005FD9B1 /* MarkdownKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 09D1A5C4265C91CC005FD9B1 /* XCRemoteSwiftPackageReference "swift-markdownkit" */;
+			productName = MarkdownKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 09D1A5A7265C7460005FD9B1 /* Project object */;
 }

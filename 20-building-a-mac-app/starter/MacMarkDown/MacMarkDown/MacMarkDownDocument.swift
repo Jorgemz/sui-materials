@@ -7,33 +7,39 @@
 
 import SwiftUI
 import UniformTypeIdentifiers
+import MarkdownKit
 
 extension UTType {
-    static var exampleText: UTType {
-        UTType(importedAs: "com.example.plain-text")
-    }
+  static var markdownText: UTType {
+    UTType(importedAs: "net.daringfireball.markdown")
+  }
 }
 
 struct MacMarkDownDocument: FileDocument {
-    var text: String
-
-    init(text: String = "Hello, world!") {
-        self.text = text
+  var text: String
+  
+  var html: String {
+    let markdown = MarkdownParser.standard.parse(text)
+    return HtmlGenerator.standard.generate(doc: markdown)
+  }
+  
+  init(text: String = "# Hello, MacMarkDown!") {
+    self.text = text
+  }
+  
+  static var readableContentTypes: [UTType] { [.markdownText] }
+  
+  init(configuration: ReadConfiguration) throws {
+    guard let data = configuration.file.regularFileContents,
+          let string = String(data: data, encoding: .utf8)
+    else {
+      throw CocoaError(.fileReadCorruptFile)
     }
-
-    static var readableContentTypes: [UTType] { [.exampleText] }
-
-    init(configuration: ReadConfiguration) throws {
-        guard let data = configuration.file.regularFileContents,
-              let string = String(data: data, encoding: .utf8)
-        else {
-            throw CocoaError(.fileReadCorruptFile)
-        }
-        text = string
-    }
-    
-    func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
-        let data = text.data(using: .utf8)!
-        return .init(regularFileWithContents: data)
-    }
+    text = string
+  }
+  
+  func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
+    let data = text.data(using: .utf8)!
+    return .init(regularFileWithContents: data)
+  }
 }
