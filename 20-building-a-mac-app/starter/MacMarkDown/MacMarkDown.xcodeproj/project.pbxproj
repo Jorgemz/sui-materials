@@ -16,6 +16,11 @@
 		09D1A5C8265C94E5005FD9B1 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1A5C7265C94E5005FD9B1 /* WebView.swift */; };
 		09D1A5CA265CA0B0005FD9B1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1A5C9265CA0B0005FD9B1 /* SettingsView.swift */; };
 		09D1A5CC265CA996005FD9B1 /* MenuCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1A5CB265CA996005FD9B1 /* MenuCommands.swift */; };
+		09D1A5DE265CAEE7005FD9B1 /* StyleSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1A5D9265CAEE7005FD9B1 /* StyleSheet.swift */; };
+		09D1A5DF265CAEE7005FD9B1 /* ulysses.css in Resources */ = {isa = PBXBuildFile; fileRef = 09D1A5DA265CAEE7005FD9B1 /* ulysses.css */; };
+		09D1A5E0265CAEE7005FD9B1 /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = 09D1A5DB265CAEE7005FD9B1 /* github.css */; };
+		09D1A5E1265CAEE7005FD9B1 /* solarizeddark.css in Resources */ = {isa = PBXBuildFile; fileRef = 09D1A5DC265CAEE7005FD9B1 /* solarizeddark.css */; };
+		09D1A5E2265CAEE7005FD9B1 /* lopash.css in Resources */ = {isa = PBXBuildFile; fileRef = 09D1A5DD265CAEE7005FD9B1 /* lopash.css */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		09D1A5C7265C94E5005FD9B1 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		09D1A5C9265CA0B0005FD9B1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		09D1A5CB265CA996005FD9B1 /* MenuCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCommands.swift; sourceTree = "<group>"; };
+		09D1A5D9265CAEE7005FD9B1 /* StyleSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleSheet.swift; sourceTree = "<group>"; };
+		09D1A5DA265CAEE7005FD9B1 /* ulysses.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = ulysses.css; sourceTree = "<group>"; };
+		09D1A5DB265CAEE7005FD9B1 /* github.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = github.css; sourceTree = "<group>"; };
+		09D1A5DC265CAEE7005FD9B1 /* solarizeddark.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = solarizeddark.css; sourceTree = "<group>"; };
+		09D1A5DD265CAEE7005FD9B1 /* lopash.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = lopash.css; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +73,7 @@
 		09D1A5B1265C7460005FD9B1 /* MacMarkDown */ = {
 			isa = PBXGroup;
 			children = (
+				09D1A5D8265CAEE7005FD9B1 /* StyleSheets */,
 				09D1A5B2265C7460005FD9B1 /* MacMarkDownApp.swift */,
 				09D1A5B4265C7460005FD9B1 /* MacMarkDownDocument.swift */,
 				09D1A5C7265C94E5005FD9B1 /* WebView.swift */,
@@ -83,6 +94,18 @@
 				09D1A5BB265C7462005FD9B1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		09D1A5D8265CAEE7005FD9B1 /* StyleSheets */ = {
+			isa = PBXGroup;
+			children = (
+				09D1A5D9265CAEE7005FD9B1 /* StyleSheet.swift */,
+				09D1A5DA265CAEE7005FD9B1 /* ulysses.css */,
+				09D1A5DB265CAEE7005FD9B1 /* github.css */,
+				09D1A5DC265CAEE7005FD9B1 /* solarizeddark.css */,
+				09D1A5DD265CAEE7005FD9B1 /* lopash.css */,
+			);
+			path = StyleSheets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,7 +171,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09D1A5E2265CAEE7005FD9B1 /* lopash.css in Resources */,
+				09D1A5E0265CAEE7005FD9B1 /* github.css in Resources */,
+				09D1A5E1265CAEE7005FD9B1 /* solarizeddark.css in Resources */,
 				09D1A5BC265C7462005FD9B1 /* Preview Assets.xcassets in Resources */,
+				09D1A5DF265CAEE7005FD9B1 /* ulysses.css in Resources */,
 				09D1A5B9265C7462005FD9B1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +193,7 @@
 				09D1A5B5265C7460005FD9B1 /* MacMarkDownDocument.swift in Sources */,
 				09D1A5B7265C7460005FD9B1 /* ContentView.swift in Sources */,
 				09D1A5CA265CA0B0005FD9B1 /* SettingsView.swift in Sources */,
+				09D1A5DE265CAEE7005FD9B1 /* StyleSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

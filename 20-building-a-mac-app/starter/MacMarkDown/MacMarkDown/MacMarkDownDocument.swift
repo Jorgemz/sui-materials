@@ -42,4 +42,11 @@ struct MacMarkDownDocument: FileDocument {
     let data = text.data(using: .utf8)!
     return .init(regularFileWithContents: data)
   }
+  
+  //
+  mutating func refreshHtml() {
+    let tempText = text
+    text = ""
+    text = tempText
+  }
 }
