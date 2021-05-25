@@ -23,6 +23,16 @@ struct ContentView: View {
             document.refreshHtml()
           }
       }
+      else if previewState == .html {
+        ScrollView {
+          Text(document.html)
+            .frame(minWidth: 200)
+            .frame(maxWidth: .infinity, maxHeight: .infinity,
+                   alignment: .topLeading)
+            .padding()
+            .font(.system(size: CGFloat(editorFontSize)))
+        }
+      }
     }
     .frame(minWidth: 400, idealWidth: 600, maxWidth: .infinity,
            minHeight: 300, idealHeight: 400, maxHeight: .infinity)
