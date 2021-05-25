@@ -21,6 +21,7 @@
 		09D1A5E0265CAEE7005FD9B1 /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = 09D1A5DB265CAEE7005FD9B1 /* github.css */; };
 		09D1A5E1265CAEE7005FD9B1 /* solarizeddark.css in Resources */ = {isa = PBXBuildFile; fileRef = 09D1A5DC265CAEE7005FD9B1 /* solarizeddark.css */; };
 		09D1A5E2265CAEE7005FD9B1 /* lopash.css in Resources */ = {isa = PBXBuildFile; fileRef = 09D1A5DD265CAEE7005FD9B1 /* lopash.css */; };
+		09D1A5E4265CBAD9005FD9B1 /* ToolbarCommands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09D1A5E3265CBAD9005FD9B1 /* ToolbarCommands.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		09D1A5DB265CAEE7005FD9B1 /* github.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = github.css; sourceTree = "<group>"; };
 		09D1A5DC265CAEE7005FD9B1 /* solarizeddark.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = solarizeddark.css; sourceTree = "<group>"; };
 		09D1A5DD265CAEE7005FD9B1 /* lopash.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = lopash.css; sourceTree = "<group>"; };
+		09D1A5E3265CBAD9005FD9B1 /* ToolbarCommands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarCommands.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		09D1A5B1265C7460005FD9B1 /* MacMarkDown */ = {
 			isa = PBXGroup;
 			children = (
+				09D1A5E3265CBAD9005FD9B1 /* ToolbarCommands.swift */,
 				09D1A5D8265CAEE7005FD9B1 /* StyleSheets */,
 				09D1A5B2265C7460005FD9B1 /* MacMarkDownApp.swift */,
 				09D1A5B4265C7460005FD9B1 /* MacMarkDownDocument.swift */,
@@ -192,6 +195,7 @@
 				09D1A5CC265CA996005FD9B1 /* MenuCommands.swift in Sources */,
 				09D1A5B5265C7460005FD9B1 /* MacMarkDownDocument.swift in Sources */,
 				09D1A5B7265C7460005FD9B1 /* ContentView.swift in Sources */,
+				09D1A5E4265CBAD9005FD9B1 /* ToolbarCommands.swift in Sources */,
 				09D1A5CA265CA0B0005FD9B1 /* SettingsView.swift in Sources */,
 				09D1A5DE265CAEE7005FD9B1 /* StyleSheet.swift in Sources */,
 			);
